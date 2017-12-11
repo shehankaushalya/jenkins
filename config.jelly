@@ -1,0 +1,234 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+	<!--
+		This jelly script is used for per-project configuration.
+		See global.jelly for a general discussion about jelly script.
+	-->
+	<f:entry title="Release goals and options" help="/plugin/m2release/help-projectConfig-releaseGoals.html">
+		<!--
+			Creates a text field that shows the value of the "releaseGoals" property.
+			When submitted, it will be passed to the corresponding constructor parameter.
+		-->
+		<f:textbox field="releaseGoals" value="${h.defaulted(instance.releaseGoals,descriptor.DEFAULT_RELEASE_GOALS)}"/>
+	</f:entry>
+	<f:entry title="DryRun goals and options" help="/plugin/m2release/help-projectConfig-dryRunGoals.html">
+		<f:textbox field="dryRunGoals" value="${h.defaulted(instance.dryRunGoals,descriptor.DEFAULT_DRYRUN_GOALS)}"/>
+	</f:entry>
+
+
+    <!--START WSO2 changes-->
+
+
+
+    <f:entry title="Product" help="/plugin/m2release/help-projectEnableProduct.html">
+        <f:checkbox name="enableProduct" checked="${h.defaulted(instance.enableProduct,descriptor.DEFAULT_ENABLE_PRODUCT)}"/>
+    </f:entry>
+    <f:entry title="Weekly release" help="/plugin/m2release/help-projectEnableWeeklyRelease.html">
+        <f:checkbox name="enableWeeklyRelease" checked="${h.defaulted(instance.enableWeeklyRelease,descriptor.DEFAULT_ENABLE_WEEKLY_RELEASE)}"/>
+    </f:entry>
+
+
+<!--
+
+    <j:set var="mavenValidationLevels" value="${it.descriptor.mavenValidationLevels}" />
+          <f:entry title="${%Maven Validation Level}">
+            <select class="setting-input" name="maven.validationLevel">
+             <j:forEach var="level" items="${mavenValidationLevels}">
+                <f:option selected="${it.mavenValidationLevel == level.value}" value="${level.value}">${level.key}</f:option>
+             </j:forEach>
+          </select>
+    </f:entry>
+
+
+
+      <j:set var="mavenSettingsConfigs" value="${descriptor.allMavenSettingsConfigs}" />
+      <f:entry title="${%Maven Settings Configs}">
+        <select class="setting-input" name="maven.mavenSettingsConfigId">
+          <f:option value="">- Select -</f:option>
+          <j:forEach var="settingConfig" items="${mavenSettingsConfigs}">
+            <f:option selected="${it.settingConfigId == settingConfig.id}" value="${settingConfig.id}">${settingConfig.name}</f:option>
+          </j:forEach>
+        </select>
+      </f:entry>
+
+
+
+<f:entry title="Time Trigger Option dvcd" >
+    	<f:textbox field="myString" value="${descriptor.myString}"/>
+</f:entry>
+
+
+
+    <f:entry title="Time Trigger Option dvcd" >
+        	<f:textbox field="vlaue" value="${h.defaulted(instance.vlaue,Descriptor.DEFAULT_VLAUE)}"/>
+    </f:entry>
+
+    -->
+
+        <j:set var="mavenValidationLevels" value="${it.descriptor.mavenValidationLevels}" />
+              <f:entry title="${%Maven Validation Level}">
+                <select class="setting-input" name="maven.validationLevel">
+                 <j:forEach var="level" items="${mavenValidationLevels}">
+                    <f:option selected="${it.mavenValidationLevel == level.value}" value="${level.value}">${level.key}</f:option>
+                 </j:forEach>
+              </select>
+        </f:entry>
+
+
+
+
+
+
+    <f:entry help="/plugin/m2release/help-projectConfig-weeklyRelease.html">
+
+        <label>Day</label>
+        &amp;nbsp;
+        <select name="day" field="day" value="${it.descriptor.mavenValidationLevels}" >
+            <option value="Mon">Monday</option>
+            <option value="Tue">Tuesday</option>
+            <option value="Wed">Wednesday</option>
+            <option value="Thu">Thursday</option>
+            <option value="Fri">Friday</option>
+            <option value="Sat">Saturday</option>
+            <option value="Sun">Sunday</option>
+        </select>
+        &amp;nbsp;&amp;nbsp;
+
+        <label>Hour</label>
+        &amp;nbsp;
+        <select name="hour" field="hour" value="${h.defaulted(instance.hour,Descriptor.DEFAULT_HOUR)}" >
+
+                    <option value="00">00</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+        </select>
+        &amp;nbsp;&amp;nbsp;
+
+        <label>Minute</label>
+        &amp;nbsp;
+
+
+        <select name="minute" field="minute" value="${h.defaulted(instance.minute,Descriptor.DEFAULT_MINUTE)}" >
+                    <option value="00">00</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                    <option value="46">46</option>
+                    <option value="47">47</option>
+                    <option value="48">48</option>
+                    <option value="49">49</option>
+                    <option value="50">50</option>
+                    <option value="51">51</option>
+                    <option value="52">52</option>
+                    <option value="53">53</option>
+                    <option value="54">54</option>
+                    <option value="55">55</option>
+                    <option value="56">56</option>
+                    <option value="57">57</option>
+                    <option value="58">58</option>
+                    <option value="59">59</option>
+                </select>
+
+    </f:entry>
+
+    <f:entry title="Configured time" help="/plugin/m2release/help-projectConfig-time.html">
+         <f:textbox field="weeklyRelease" value="${h.defaulted(instance.weeklyRelease,Descriptor.DEFAULT_WEEKLY_RELEASE)}"/>
+    </f:entry>
+
+
+
+    <!--END WSO2 changes-->
+
+
+
+	<f:entry title="Number of successful release builds to keep" help="/plugin/m2release/help-projectConfig-numberOfReleaseBuildsToKeep.html">
+		<f:textbox field="numberOfReleaseBuildsToKeep" value="${h.defaulted(instance.numberOfReleaseBuildsToKeep, descriptor.DEFAULT_NUMBER_OF_RELEASE_BUILDS_TO_KEEP)}" />
+	</f:entry>
+	
+	<f:entry title="Preselect 'Specify custom SCM comment prefix'" help="/plugin/m2release/help-projectConfig-selectCustomScmCommentPrefix.html">
+		<f:checkbox name="selectCustomScmCommentPrefix" checked="${h.defaulted(instance.selectCustomScmCommentPrefix,descriptor.DEFAULT_SELECT_CUSTOM_SCM_COMMENT_PREFIX)}"/>
+	</f:entry>
+	
+	<f:entry title="Preselect 'Append Jenkins Username'" help="/plugin/m2release/help-projectConfig-selectAppendHudsonUsername.html">
+		<f:checkbox name="selectAppendHudsonUsername" checked="${h.defaulted(instance.selectAppendHudsonUsername,descriptor.DEFAULT_SELECT_APPEND_HUDSON_USERNAME)}"/>
+	</f:entry>
+	
+	<f:entry title="Preselect 'Specify SCM login/password'" help="/plugin/m2release/help-projectConfig-selectScmCredentials.html">
+		<f:checkbox name="selectScmCredentials" checked="${h.defaulted(instance.selectScmCredentials,descriptor.DEFAULT_SELECT_SCM_CREDENTIALS)}"/>
+	</f:entry>
+	
+	<f:advanced>
+		<f:entry title="Release environment variable" help="/plugin/m2release/help-projectConfig-releaseEnvVar.html">
+			<f:textbox field="releaseEnvVar" value="${h.defaulted(instance.releaseEnvVar,descriptor.DEFAULT_RELEASE_ENVVAR)}"/>
+		</f:entry>
+		<f:entry title="SCM username environment variable" help="/plugin/m2release/help-projectConfig-scmUserEnvVar.html">
+			<f:textbox field="scmUserEnvVar" value="${instance.scmUserEnvVar}"/>
+		</f:entry>
+		<f:entry title="SCM password environment variable" help="/plugin/m2release/help-projectConfig-scmPasswordEnvVar.html">
+			<f:textbox field="scmPasswordEnvVar" value="${instance.scmPasswordEnvVar}"/>
+		</f:entry>
+	</f:advanced>
+</j:jelly>
